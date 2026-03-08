@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sma-modbus-exporter
-        image: ghcr.io/volkszaehler/sma-modbus-exporter:latest
+        image: image: volkszaehler/sma-modbus-exporter:latest
         args:
           - "--sma.host=192.168.1.16"
           - "--sma.port=502"
