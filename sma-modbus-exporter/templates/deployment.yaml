@@ -14,6 +14,8 @@ spec:
       labels:
         app: sma-modbus-exporter
     spec:
+      imagePullSecrets:
+{{- toYaml .Values.imagePullSecrets | nindent 8 }}
       containers:
         - name: sma-modbus-exporter
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -27,4 +29,3 @@ spec:
               containerPort: {{ .Values.service.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-

@@ -13,3 +13,7 @@ service:
   type: ClusterIP
 
 resources: {}
+
+imagePullSecrets:
+  - name: dockerhub-creds
+
