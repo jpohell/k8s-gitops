@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sma-modbus-exporter
+  labels:
+    app: sma-modbus-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sma-modbus-exporter
+  template:
+    metadata:
+      labels:
+        app: sma-modbus-exporter
+    spec:
+      containers:
+        - name: sma-modbus-exporter
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "--modbus.host={{ .Values.modbus.host }}"
+            - "--modbus.port={{ .Values.modbus.port }}"
+            - "--modbus.unit-id={{ .Values.modbus.unitId }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+
