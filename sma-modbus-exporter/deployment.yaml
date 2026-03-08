@@ -18,9 +18,9 @@ spec:
         image: volkszaehler/mbmd:latest
         args:
           - "run"
-          - "--adapter=192.168.1.16:502"
-          - "--device=1:sma:1"
+          - "-a=192.168.1.16:502"
+          - "-d=SUNS:1@192.168.1.16:502"
           - "--api"
           - "--port=8080"
         ports:
-          - containerPort: 8080
+        - containerPort: 8080
