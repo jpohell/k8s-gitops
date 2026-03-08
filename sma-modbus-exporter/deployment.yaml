@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sma-modbus-exporter
+  labels:
+    app: sma-modbus-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sma-modbus-exporter
+  template:
+    metadata:
+      labels:
+        app: sma-modbus-exporter
+    spec:
+      containers:
+      - name: sma-modbus-exporter
+        image: ghcr.io/volkszaehler/sma-modbus-exporter:latest
+        args:
+          - "--sma.host=192.168.1.16"
+          - "--sma.port=502"
+          - "--sma.device-type=sb"
+          - "--web.listen-address=:8080"
+        ports:
+        - containerPort: 8080
