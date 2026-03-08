@@ -1,12 +1,12 @@
 image:
-  repository: ghcr.io/volkszaehler/sma-modbus-exporter
+  repository: volkszaehler/sma-modbus-exporter
   tag: latest
   pullPolicy: IfNotPresent
 
 modbus:
   host: "192.168.1.16"
   port: 502
-  unitId: 3   # SMA proprietary Modbus ID
+  unitId: 3
 
 service:
   port: 8080
